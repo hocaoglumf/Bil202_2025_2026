@@ -1,3 +1,13 @@
+'''
+
+Geek sınıfında geekName ve geekAge öznitelikleri vardır.
+Öznitelikler sınıf nesnelerine aittir ve public olarak tanımlanmıştır.
+
+Özniteliklerine doğrudan erişim mümkündür ve bu sınıftan türeyen tüm
+'''
+
+
+
 class Geek:
     def __init__(self, name, age):
         self.geekName = name
@@ -6,6 +16,7 @@ class Geek:
         print("Age:", self.geekAge)
 
 obj = Geek("R2J", 20)
+
 
 print("Name:", obj.geekName)
 obj.displayAge()

@@ -1,10 +1,14 @@
 import math
 import matplotlib.pyplot as plt
 
+
 class Trigonometry:
     def __init__(self):
         self.x=[]
         self.y=[]
+        self.first=0
+        self.last=360
+        self.step=5
 
     def Calculate(self):
         pass
@@ -19,7 +23,7 @@ class Sinus(Trigonometry):
         super().__init__()
 
     def Calculate(self):
-        for i in range(0,360,10):
+        for i in range(self.first,self.last,self.step):
             self.x.append(i)
             self.y.append(math.sin(i))
 
@@ -28,7 +32,7 @@ class Cosinus(Trigonometry):
         super().__init__()
 
     def Calculate(self):
-        for i in range(0,360,10):
+        for i in range(self.first,self.last,self.step):
             self.x.append(i)
             self.y.append(math.cos(i))
 
@@ -39,7 +43,7 @@ class Tan(Trigonometry):
         self.isim="Tanjant"
 
     def Calculate(self):
-        for i in range(0,360,10):
+        for i in range(self.first,self.last,self.step):
             self.x.append(i)
             self.y.append(math.tan(i))
 
@@ -58,6 +62,7 @@ class Bag:
             i.WriteValues()
 
     def Plot(self):
+        plt.legend()
         for i in self.trigoList:
             plt.plot(i.x,i.y)
 
@@ -65,12 +70,23 @@ class Bag:
 
 
 s0=Sinus()
+
 s1=Sinus()
+s1.first=120
+s1.last=320
+
 c0=Cosinus()
+c0.first=110
+c0.last=320
+c0.step=10
+
 c1=Cosinus()
 s2=Sinus()
 tn0=Tan()
 tn1=Tan()
+tn1.first=60
+tn1.last=120
+tn1.step=1
 
 bg=Bag()
 

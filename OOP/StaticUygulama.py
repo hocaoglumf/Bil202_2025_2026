@@ -24,6 +24,8 @@ class Matematic:
     def GetMyOwnResults(self):
         return self.__myOwnResult
 
+
+
 a=Matematic()
 Matematic.results.append(a.Cos(30))
 print(Matematic.results, "My Own Results :", a.GetMyOwnResults() )
@@ -41,4 +43,5 @@ print(Matematic.results, "My Own Results :", c.GetMyOwnResults() )
 d=Matematic()
 Matematic.results.append(d.Log(30,2))
 print(Matematic.results, "My Own Results :", d.GetMyOwnResults() )
+
 

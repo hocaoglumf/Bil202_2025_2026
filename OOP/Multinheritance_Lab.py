@@ -17,4 +17,5 @@ class CAP_IC(Industrial, ComputerEng):
 class Electronic(Student):
     pass
 
-class CAP_IE(Industrial, Electronic)
+class CAP_IE(Industrial, Electronic):
+    pass

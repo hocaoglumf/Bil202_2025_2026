@@ -8,35 +8,42 @@ class Matematic:
 
     def Sin(self,X):
         s=y.Yardimcilar.Sin(X)
-        self.__myOwnResult.append(s)
         return s
 
     def Cos(self,X):
         s=y.Yardimcilar.Cos(X)
-        self.__myOwnResult.append(s)
         return s
 
     def Log(self,X,base):
         s=y.Yardimcilar.Log(X, base)
-        self.__myOwnResult.append(s)
         return s
 
     def GetMyOwnResults(self):
         return self.__myOwnResult
 
+    def AddOwnResult(self, v):
+        self.__myOwnResult.append(v)
+
+    @classmethod
+    def Add(cls, n, val):
+        cls.results.append(val)
+        n.AddOwnResult(val)
+
+
 
 
 a=Matematic()
-Matematic.results.append(a.Cos(30))
+Matematic.Add(a,5)
+Matematic.Add(a,a.Cos(30))
 print(Matematic.results, "My Own Results :", a.GetMyOwnResults() )
 
 b=Matematic()
-Matematic.results.append(b.Sin(30))
+Matematic.Add(b,b.Sin(30))
 print(Matematic.results, "My Own Results :", b.GetMyOwnResults() )
 
 
 c=Matematic()
-Matematic.results.append(c.Cos(30))
+Matematic.Add(c,c.Cos(30))
 print(Matematic.results, "My Own Results :", c.GetMyOwnResults() )
 
 

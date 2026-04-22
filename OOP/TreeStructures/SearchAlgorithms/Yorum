@@ -1,0 +1,37 @@
+DFS (Depth-First Search) — “Derine git, çözümü kaz”
+
+DFS genelde yapının derinliklerinde anlam aranan durumlarda kullanılır:
+
+Tipik kullanım alanları
+- Backtracking problemleri
+-- Sudoku, N-Queens
+- Tüm olasılıkları gezme
+-- Kombinasyon / permütasyon üretimi
+- Topological sorting
+- Cycle detection
+- Proof / reasoning sistemleri
+
+Sezgisel yorum
+
+DFS:
+“Bir hipotezi seç, sonuna kadar götür, yanlışsa geri dön”
+
+Bu yüzden:
+-mantık programlama
+-planlama
+-davranış çözümleme
+gibi alanlarda çok güçlüdür.
+
+BFS (Breadth-First Search) — “Katman katman ilerle”
+
+BFS ise mesafe, yayılım ve en kısa yol odaklıdır.
+
+Tipik kullanım alanları
+-En kısa yol bulma (unweighted graph)
+-Level-order traversal (ağaçlar)
+-Network broadcast / yayılım
+-Epidemi / diffusion modelleri
+-State-space search (minimum adım)
+Sezgisel yorum
+BFS:
+“Önce en yakın ihtimalleri kontrol et”

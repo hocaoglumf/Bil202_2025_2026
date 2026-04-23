@@ -11,8 +11,3 @@ def func():
 
 func()
 func()
-
-print("")
-
-t = Test()
-t = Test()

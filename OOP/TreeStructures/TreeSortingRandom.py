@@ -2,23 +2,45 @@ import random
 import time
 
 class Node:
+    maxDepth=random.randint(1,10)
+    numberofNodes=0
     def __init__(self):
         self.nodes=[]
+        self.classes = [MergeSort, BubbleSort, InsertionSort, HeapSort, ShellSort, SelectionSort]
+        self.layer=0
 
+
+    def Sort(self,L):
+        for i in self.nodes:
+            i.Sort(L)
 
     def AppendNode(self,n):
         self.nodes.append(n)
+
+    def CreateSubnodes(self):
+        Node.numberofNodes +=1
+        if self.layer>=Node.maxDepth:
+            return
+
+
+        num=random.randint(1,10)
+        for i in range(num):
+            srt=self.classes[random.randint(0,len(self.classes)-1)]()
+            srt.layer= self.layer+1
+            self.nodes.append(srt)
+        for i in self.nodes:
+            i.CreateSubnodes()
 
 
 class Sort(Node):
     def __init__(self):
         super().__init__()
         self.name="noname"
-        self.result={}
+        self.result=[]
 
 
     def WriteResult(self):
-        print(self.name,"  ",self.result[self.name])
+        print(self.name,"  ",self.result[1])
         for i in self.nodes:
             i.WriteResult()
 
@@ -70,12 +92,10 @@ class HeapSort(Sort):
         start = time.time()
         sorted=self.__heap_sort(L)
         end = time.time()
-        self.result[self.name]= end - start
+        self.result=[sorted, end - start]
         if len(self.nodes)>0:
             for i in self.nodes:
-                nm, srtd, dur= i.Sort(L)
-                self.result[nm]= dur
-        return self.name, sorted, end - start
+                i.Sort(L)
 
 class MaxSort(Sort):
     def __init__(self):
@@ -90,12 +110,10 @@ class MaxSort(Sort):
             sorted.append(mx)
             list.remove(mx)
         end = time.time()
-        self.result[self.name]= end - start
+        self.result=[sorted, end - start]
         if len(self.nodes)>0:
             for i in self.nodes:
-                nm, srtd, dur= i.Sort(list)
-                self.result[nm]= dur
-        return self.name, sorted, end - start
+                i.Sort(list)
 
 class BubbleSort(Sort):
     def __init__(self):
@@ -112,12 +130,10 @@ class BubbleSort(Sort):
                     list[idx + 1] = temp
         end = time.time()
 
-        self.result[self.name]= end - start
-        if len(self.nodes)>0:
+        self.result = [sorted, end - start]
+        if len(self.nodes) > 0:
             for i in self.nodes:
-                nm, srtd, dur= i.Sort(list)
-                self.result[nm]= dur
-        return self.name, sorted, end - start
+                i.Sort(list)
 
 class MergeSort(Sort):
     def __init__(self):
@@ -158,12 +174,10 @@ class MergeSort(Sort):
         start = time.time()
         InputList=self.__merge_sort(unsorted_list)
         end = time.time()
-        self.result[self.name]= end - start
-        if len(self.nodes)>0:
+        self.result = [sorted, end - start]
+        if len(self.nodes) > 0:
             for i in self.nodes:
-                nm, srtd, dur= i.Sort(unsorted_list)
-                self.result[nm]= dur
-        return self.name, sorted, end - start
+                i.Sort(unsorted_list)
 
 class InsertionSort(Sort):
     def __init__(self):
@@ -184,12 +198,10 @@ class InsertionSort(Sort):
             InputList[j + 1] = nxt_element
         end = time.time()
 
-        self.result[self.name]= end - start
-        if len(self.nodes)>0:
+        self.result = [sorted, end - start]
+        if len(self.nodes) > 0:
             for i in self.nodes:
-                nm, srtd, dur= i.Sort(InputList)
-                self.result[nm]= dur
-        return self.name, sorted, end - start
+                i.Sort(InputList)
 
 class SelectionSort(Sort):
     def __init__(self):
@@ -208,12 +220,10 @@ class SelectionSort(Sort):
 
             input_list[idx], input_list[min_idx] = input_list[min_idx], input_list[idx]
         end = time.time()
-        self.result[self.name]= end - start
-        if len(self.nodes)>0:
+        self.result = [sorted, end - start]
+        if len(self.nodes) > 0:
             for i in self.nodes:
-                nm, srtd, dur= i.Sort(input_list)
-                self.result[nm]= dur
-        return self.name, sorted, end - start
+                i.Sort(input_list)
 
 class ShellSort(Sort):
     def __init__(self):
@@ -240,60 +250,22 @@ class ShellSort(Sort):
 
             gap = gap // 2
         end = time.time()
-        self.result[self.name]= end - start
-        if len(self.nodes)>0:
+        self.result = [sorted, end - start]
+        if len(self.nodes) > 0:
             for i in self.nodes:
-                nm, srtd, dur= i.Sort(input_list)
-                self.result[nm]= dur
-        return self.name, sorted, end - start
+                i.Sort(input_list)
 
 
 
 
 
-n0=BubbleSort()
-n1=HeapSort()
-n2=MergeSort()
-n3=SelectionSort()
-n4=ShellSort()
-n11=HeapSort()
+root=Node()
+root.CreateSubnodes()
+print(root)
+print(Node.maxDepth," ",Node.numberofNodes)
+lst=[]
+for i in range(10):
+    lst.append(random.randint(0,100))
 
-n0.AppendNode(n1)
-n0.AppendNode(n2)
-n0.AppendNode(n3)
+root.Sort(lst)
 
-n1.AppendNode(n4)
-
-n5=BubbleSort()
-n6=HeapSort()
-n7=MergeSort()
-n8=SelectionSort()
-n9=ShellSort()
-
-
-n10=BubbleSort()
-
-
-n1.AppendNode(n5)
-
-n2.AppendNode(n6)
-n2.AppendNode(n7)
-
-n3.AppendNode(n8)
-
-n8.AppendNode(n9)
-n8.AppendNode(n10)
-
-
-n7.AppendNode(n11)
-
-data=[]
-for i in range(0,1000):
-    data.append(random.randint(0,100))
-
-
-n0.Sort(data)
-n0.WriteResult()
-
-print("Root:",list(n0.result.keys()))
-print("",list(n1.result.keys()))

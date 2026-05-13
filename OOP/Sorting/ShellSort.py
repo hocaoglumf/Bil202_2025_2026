@@ -17,7 +17,7 @@ def shellSort(input_list):
         gap = gap // 2
     return input_list
 
-#L=[4,3,2,1,6]
-#print(L)
-#LL=shellSort(L)
-#print(LL)
+L=[4,3,2,1,6]
+print(L)
+LL=shellSort(L)
+print(LL)

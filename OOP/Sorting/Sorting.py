@@ -188,6 +188,30 @@ class ShellSort(Sort):
         end = time.time()
         return input_list, end-start
 
+class InsertionSort(Sort):
+    def __init__(self):
+        self.name="Insertion Sort"
+
+    def Sort(self,input_list):
+        start = time.time()
+        # Listenin ikinci elemanından (indis 1) başlarız çünkü
+        # ilk elemanın (indis 0) zaten kendi içinde sıralı olduğunu varsayarız.
+        for i in range(1, len(input_list)):
+            key = input_list[i]  # Sıralanacak olan mevcut eleman
+            j = i - 1
+
+            # Key'den büyük olan elemanları bir sağa kaydırarak
+            # key için doğru boşluğu açıyoruz.
+            while j >= 0 and input_list[j] > key:
+                input_list[j + 1] = input_list[j]
+                j -= 1
+
+            # Doğru boşluk bulunduğunda elemanı yerleştiriyoruz.
+            input_list[j + 1] = key
+            end = time.time()
+        return input_list, end-start
+
+
 class Test:
     def __init__(self):
         self.algorithms=[]
@@ -202,7 +226,7 @@ class Test:
         self.algorithms.append(SelectionSort())
         self.algorithms.append(MaxSort())
         self.algorithms.append(HeapSort())
-
+        self.algorithms.append(InsertionSort())
 
     def GenerateInputSet(self,n):
         liste = []

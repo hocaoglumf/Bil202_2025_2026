@@ -15,4 +15,5 @@ class Singleton:
 # Kullanım
 s1 = Singleton()
 s2 = Singleton()
+s3 = Singleton()
 print(s1 is s2)  # True döner, ikisi de aynı nesnedir.

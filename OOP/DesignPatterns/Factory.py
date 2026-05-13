@@ -12,6 +12,10 @@ class AirAgent(Agent):
 class LandAgent(Agent):
     def move(self): return "Yürüyor..."
 
+
+''' 
+Pattern uygulama kısmı
+'''
 class AgentFactory:
     @staticmethod
     def get_agent(agent_type):
